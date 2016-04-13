@@ -8,6 +8,10 @@ Bundler.require(*Rails.groups)
 
 module Secrety
   class Application < Rails::Application
+    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+    
+    config.serve_static_assets = true
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -21,6 +25,6 @@ module Secrety
     # config.i18n.default_locale = :de
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
-    config.active_record.raise_in_transactional_callbacks = true
+#    config.active_record.raise_in_transactional_callbacks = true
   end
 end
