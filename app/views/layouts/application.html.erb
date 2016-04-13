@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Secrety</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
 
-<%= yield %>
+	<%= render 'layouts/head' %>
 
-</body>
+	<%= render 'layouts/header' %>
+	<body>
+		<main>
+			<%= yield %>
+		</main>
+
+		<%= render 'layouts/footer' %>
+
+		<%= render 'layouts/top-button' %>
+
+	</body>
 </html>
