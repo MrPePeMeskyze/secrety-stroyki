@@ -9,9 +9,21 @@
 	</head>
 	<body>
 		<div class="container">
-			<%= yield %>
+			<div class="row">
+				<div class="col-md-12">
+					<%= render 'admin/layouts/navigation' %>
+				</div>
+			</div>
+		</div>		
+		<div class="container">
+			<div class="row">
+				<div class="col-md-9">
+					<%= yield %>
+				</div>
+				<div style="border-left:1px solid black" class="col-md-3">
+					<%= yield :right %>
+				</div>
+			</div>
 		</div>
-		
-
 	</body>
 </html>

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 	# admin area
-	get "/admin" => "admin/object#index"
+	get "/admin" => "admin/objects#index"
 	namespace :admin do
-	  resources :object
+	  resources :objects
 	end
 end

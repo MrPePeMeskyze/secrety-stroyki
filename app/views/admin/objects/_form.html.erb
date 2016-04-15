@@ -1,0 +1,52 @@
+<%= render 'admin/shared/error_messages_objects' %>
+<div class="row">
+		<div class="col-xs-8">
+		<div class="form-group">
+			<%= f.label :header, raw("<div class='required'>&#10039;</div>Заголовок страницы") %>
+			<%= f.text_field :header, class: "form-control" %>
+		</div>
+	</div>
+	<div class="col-xs-4">
+		<div class="form-group">
+			<%= f.label :permalink, raw("<div class='required'>&#10039;</div>Путь") %>
+			<%= f.text_field :permalink, class: "form-control" %>
+		</div>
+	</div>
+</div>
+<div class="form-group">
+	<%= f.label :title, raw("<div class='required'>&#10039;</div>Заголовок окна")%>
+	<%= f.text_field :title, class: "form-control" %>
+</div>
+
+<div class="form-group">
+	<%= f.label :body, raw("Описание") %>
+	<%= f.text_area :body, class: "form-control" %>
+</div>
+<div class="form-group">
+	<%= f.label :additional_body, raw("Дополнительное описание") %>
+	<%= f.text_area :additional_body, class: "form-control" %>
+</div>
+<div class="form-group">
+	<%= f.label :meta_description, raw("META Описание") %>
+	<%= f.text_area :body, class: "form-control" %>
+</div>
+<div class="form-group">
+	<%= f.label :meta_keywords, raw("META Ключевые слова") %>
+	<%= f.text_area :body, class: "form-control" %>
+</div>
+<div class="row">
+	<div class="col-xs-1">
+		<div class="form-group">
+			<%= f.label :sort_order, "Позиция" %>
+			<%= f.text_field :sort_order, class: "form-control" %>
+		</div>
+	</div>
+</div>
+
+<div class="checkbox">
+	<%= f.check_box(:is_published) %>
+	<%= label_tag(:objects_is_published, "Публиковать") %>
+</div>
+
+<%= f.submit "Сохранить", class: "btn btn-primary" %>
+
