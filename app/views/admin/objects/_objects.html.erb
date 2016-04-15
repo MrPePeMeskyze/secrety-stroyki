@@ -1,6 +1,8 @@
-<tr> 
+<tr <% if !objects.is_published %> class="not_published" <% end %> > 
 	<th style="width:100px">
-		<%= link_to 'Удалить', [:admin, objects], :method => :delete, data: { confirm: 'Вы уверены?' },:class => 'text-danger' %>
+		<%= link_to "Удалить", { action: "destroy", id: objects.id },
+            method: :delete, data: { confirm: 'Вы уверены?' },
+            :class => 'text-danger'  %>
 	</th>
 	<th>
 		<%= link_to objects.header, :controller => "objects", :action => "index", :parent_id => objects.id %>

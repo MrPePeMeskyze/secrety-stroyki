@@ -1,6 +1,6 @@
 <%= render 'admin/shared/error_messages_objects' %>
 <div class="row">
-		<div class="col-xs-8">
+	<div class="col-xs-8">
 		<div class="form-group">
 			<%= f.label :header, raw("<div class='required'>&#10039;</div>Заголовок страницы") %>
 			<%= f.text_field :header, class: "form-control" %>
@@ -16,6 +16,15 @@
 <div class="form-group">
 	<%= f.label :title, raw("<div class='required'>&#10039;</div>Заголовок окна")%>
 	<%= f.text_field :title, class: "form-control" %>
+</div>
+
+<div class="row">
+	<div class="col-xs-6">
+		<div class="form-group">
+			<%= label_tag(:parent_id, "Родительский раздел") %>
+			<%= f.select :parent_id, @parents.map{ |objects| [objects.header, objects.id] }.insert(0,"--"),{}, { :class => 'form-control'} %>
+		</div>
+	</div>
 </div>
 
 <div class="form-group">

@@ -2,10 +2,17 @@
 #	
 ##############################################################################
 class Admin::ObjectsController < Admin::AdminController
+	before_action :all_objects, only: [:edit, :update, :new, :create]
 
+
+
+##############################################################################
 	def index
-		@objects = Objects.where("parent_id = ?", 0).order(:is_published, :sort_order)
-#		render :text => CGI.escapeHTML(@objects.inspect)
+		if params[:parent_id]
+			@objects = Objects.where("parent_id = ?", params[:parent_id])
+		else
+			@objects = Objects.where("parent_id = ?", 0).order('is_published desc, sort_order')
+		end
 	end
 
 
@@ -24,7 +31,7 @@ class Admin::ObjectsController < Admin::AdminController
 	    	flash[:success] = "Услуга успешно создана!"
 	      	redirect_to admin_objects_path
 	    else
-	    	render 'new'
+	    	render :new
 		end	
 	end
 	
@@ -44,7 +51,7 @@ class Admin::ObjectsController < Admin::AdminController
 			flash[:success] = "Услуга успешно отредактированна"
 			redirect_to admin_objects_path
 		else
-			render 'edit'
+			render :edit
 		end
 	end
 
@@ -52,7 +59,7 @@ class Admin::ObjectsController < Admin::AdminController
 	
 ##############################################################################
 	def destroy
-		Objects.find_by_permalink(params[:id]).destroy
+		Objects.find_by_id(params[:id]).destroy
 		flash[:success] = "Услуга успешно удалена!"
 		redirect_to admin_objects_path
 	end
@@ -66,6 +73,12 @@ class Admin::ObjectsController < Admin::AdminController
 	      params.require(:objects)
 	      	.permit(:parent_id, :is_published, :permalink, :header, :title, :body, :sort_order, :image, :meta_keywords, :meta_description, :additional_body )
 	    end
-	
+		def all_objects
+			if params[:id].present?
+				@parents = Objects.where.not(:id => params[:id]).order(:thread_id, :sort_order)
+			else
+				@parents = Objects.all.order(:thread_id, :sort_order)
+			end
+		end
 ##############################################################################
 end
