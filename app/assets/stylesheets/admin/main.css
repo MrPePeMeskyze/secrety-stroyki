@@ -1,0 +1,8 @@
+.required{
+  display: inline-block;
+  color:red;
+}
+.not_published,
+.not_published a{
+	color: #999;
+}
