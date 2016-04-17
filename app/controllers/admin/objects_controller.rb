@@ -28,7 +28,7 @@ class Admin::ObjectsController < Admin::AdminController
 	def create
 		@object = Objects.new(objects_params)
 	    if @object.save
-	    	flash[:success] = "Услуга успешно создана!"
+	    	flash[:success] = "Страница успешно создана!"
 	      	redirect_to admin_objects_path
 	    else
 	    	render :new
@@ -48,7 +48,7 @@ class Admin::ObjectsController < Admin::AdminController
 	def update
 		@object = Objects.find_by_id(params[:id])
 		if @object.update_attributes(objects_params)
-			flash[:success] = "Услуга успешно отредактированна"
+			flash[:success] = "Страница успешно отредактирована!"
 			redirect_to admin_objects_path
 		else
 			render :edit
@@ -60,7 +60,7 @@ class Admin::ObjectsController < Admin::AdminController
 ##############################################################################
 	def destroy
 		Objects.find_by_id(params[:id]).destroy
-		flash[:success] = "Услуга успешно удалена!"
+		flash[:success] = "Страница успешно удалена!"
 		redirect_to admin_objects_path
 	end
 
