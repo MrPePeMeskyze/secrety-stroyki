@@ -1,0 +1,31 @@
+<%= render 'admin/layouts/error_messages', :object => @navigation %>
+
+<div class="row">
+	<div class="col-xs-8">
+		<div class="form-group">
+			<%= f.label :description, raw("<div class='required'>&#10039;</div>Описание")%>
+			<%= f.text_field :description, class: "form-control" %>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-8">
+		<div class="form-group">
+			<%= f.label :name, raw("<div class='required'>&#10039;</div>Название")%>
+			<%= f.text_field :name, class: "form-control" %>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-1">
+		<div class="form-group">
+			<%= f.label :sort_order, "Позиция" %>
+			<%= f.text_field :sort_order, class: "form-control" %>
+		</div>
+	</div>
+</div>
+
+<%= f.submit "Сохранить", class: "btn btn-primary" %>
+

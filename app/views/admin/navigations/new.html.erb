@@ -1,0 +1,5 @@
+<% provide(:title, 'Создание навигатора') %>
+<h1>Создание навигатора</h1>
+<%= form_for [:admin, @navigation], :url => { :action => :create }, html: { multipart: true } do |f| %>
+	<% render :partial =>'admin/navigations/form', :locals => {:f => f} %>
+<% end %>

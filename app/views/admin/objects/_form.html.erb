@@ -70,6 +70,13 @@
 	<%= f.hidden_field :image_cache %>
 </div>
 
+<%= f.collection_check_boxes :navigation_ids, Navigations.all, :id, :description do |b| %>
+	<div class="checkbox">
+		<%= b.check_box %>
+		<%= b.label %>
+	</div>
+<% end %>
+
 <div class="checkbox">
 	<%= f.check_box(:is_published) %>
 	<%= label_tag(:objects_is_published, "Публиковать") %>
