@@ -23,7 +23,6 @@ class Admin::ObjectsTypesController < Admin::AdminController
 	    	flash[:success] = "Тип страницы успешно создан!"
 	      	redirect_to admin_objects_types_path
 	    else
-	    	@errors = @object.errors.full_messages
 	    	render :new
 		end	
 	end

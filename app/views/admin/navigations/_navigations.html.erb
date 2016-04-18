@@ -1,0 +1,13 @@
+<tr> 
+	<th style="width:100px">
+		<%= link_to "Удалить", { action: "destroy", id: navigations.id },
+            method: :delete, data: { confirm: 'Вы уверены?' },
+            :class => 'text-danger'  %>
+	</th>
+	<th>
+		<%= link_to navigations.description, edit_admin_navigation_path(navigations.id) %>
+	</th>
+	<th style="width:100px">
+		<%= link_to 'Редактировать', edit_admin_navigation_path(navigations.id), :class => 'text-success' %>
+	</th>
+</tr> 
