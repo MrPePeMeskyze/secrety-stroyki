@@ -1,0 +1,20 @@
+<% provide(:title, 'Типы объектов') %>
+<% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>"><%= value %></div>
+<% end %>
+<h1>Типы объектов</h1>
+<table class="table"> 
+	<thead> 
+		<tr> 
+			<th></th> 
+			<th>Название</th> 
+			<th></th> 
+		</tr> 
+	</thead> 
+	<tbody> 
+		<%= render @objects_types %>
+	</tbody>
+</table>
+<% content_for :right do %>
+	<%= link_to raw("<span class='glyphicon glyphicon-plus-sign'></span>Добавить"), new_admin_objects_type_path, class: "btn btn-success" %>
+<% end %>

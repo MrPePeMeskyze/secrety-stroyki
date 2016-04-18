@@ -1,6 +1,6 @@
-class CreateObject < ActiveRecord::Migration
+class CreateObjects < ActiveRecord::Migration
   def change
-    create_table :object do |t|
+    create_table :objects do |t|
       t.string :title
       t.string :header
       t.text :body

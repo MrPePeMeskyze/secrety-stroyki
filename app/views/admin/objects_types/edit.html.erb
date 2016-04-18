@@ -1,0 +1,5 @@
+<% provide(:title, 'Редактирование типа объекта') %>
+<h1>Редактирование типа объекта <%= @objects_type.name %></h1>
+<%= form_for @objects_type, :url => { :action => :update }, html: { multipart: true } do |f| %>
+	<% render :partial =>'/admin/objects_types/form', :locals => {:f => f} %>
+<% end %>
