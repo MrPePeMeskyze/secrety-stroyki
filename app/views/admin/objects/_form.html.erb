@@ -14,15 +14,24 @@
 	</div>
 </div>
 <div class="form-group">
-	<%= f.label :title, raw("<div class='required'>&#10039;</div>Заголовок окна")%>
+	<%= f.label :title, raw("<div class='required'>&#10039;</div>Заголовок окна") %>
 	<%= f.text_field :title, class: "form-control" %>
 </div>
 
 <div class="row">
 	<div class="col-xs-6">
 		<div class="form-group">
-			<%= label_tag(:parent_id, "Родительский раздел") %>
+			<%= label_tag(:objects_parent_id, "Родительский раздел") %>
 			<%= f.select :parent_id, @parents.map{ |objects| [objects.header, objects.id] }.insert(0,"--"),{}, { :class => 'form-control'} %>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-6">
+		<div class="form-group">
+			<%= label_tag(:objects_objects_type_id, raw("<div class='required'>&#10039;</div> Тип страницы")) %>
+			<%= f.select :objects_type_id, @objects_types.map{ |objects_types| [objects_types.name, objects_types.id] }.insert(0,"--"),{}, { :class => 'form-control'} %>
 		</div>
 	</div>
 </div>
@@ -37,11 +46,11 @@
 </div>
 <div class="form-group">
 	<%= f.label :meta_description, raw("META Описание") %>
-	<%= f.text_area :body, class: "form-control" %>
+	<%= f.text_area :meta_description, class: "form-control" %>
 </div>
 <div class="form-group">
 	<%= f.label :meta_keywords, raw("META Ключевые слова") %>
-	<%= f.text_area :body, class: "form-control" %>
+	<%= f.text_area :meta_keywords, class: "form-control" %>
 </div>
 <div class="row">
 	<div class="col-xs-1">

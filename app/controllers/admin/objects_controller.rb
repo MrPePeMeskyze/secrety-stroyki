@@ -2,7 +2,7 @@
 #	
 ##############################################################################
 class Admin::ObjectsController < Admin::AdminController
-	before_action :all_objects, only: [:edit, :update, :new, :create]
+	before_action :objects_ext, only: [:edit, :update, :new, :create]
 
 
 
@@ -71,14 +71,15 @@ class Admin::ObjectsController < Admin::AdminController
 
 	    def objects_params
 	      params.require(:objects)
-	      	.permit(:parent_id, :is_published, :permalink, :header, :title, :body, :sort_order, :image, :meta_keywords, :meta_description, :additional_body )
+	      	.permit(:parent_id, :is_published, :permalink, :header, :objects_type_id, :title, :body, :sort_order, :image, :meta_keywords, :meta_description, :additional_body )
 	    end
-		def all_objects
+		def objects_ext
 			if params[:id].present?
 				@parents = Objects.where.not(:id => params[:id]).order(:thread_id, :sort_order)
 			else
 				@parents = Objects.all.order(:thread_id, :sort_order)
 			end
+			@objects_types = ObjectsTypes.all.order(:sort_order, :name)
 		end
 ##############################################################################
 end

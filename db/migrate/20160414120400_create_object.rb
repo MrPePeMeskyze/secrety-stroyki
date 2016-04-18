@@ -13,7 +13,7 @@ class CreateObjects < ActiveRecord::Migration
       t.integer :sort_order, :default => 1
       t.integer :thread_id, :default => 0
       t.integer :nesting, :default => 0
-      t.integer :object_type_id, :default => 0
+      t.integer :objects_type_id, :default => 0
       t.integer :auser_id, :default => 0
       t.text :meta_keywords
       t.text :meta_description
