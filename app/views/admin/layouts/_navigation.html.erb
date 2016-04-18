@@ -12,8 +12,12 @@
 	</div>
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		<ul class="nav navbar-nav">
-			<li class="active"><a href="#">Структура сайта</a></li>
-			<li><a href="#">Link</a></li>
+			<li>
+				<%= link_to "Структура сайта", admin_objects_path %>
+			</li>
+			<li>
+				<%= link_to "Типы объектов", admin_objects_types_path %>
+			</li>	
 		</ul>
 	</div>
 </nav>

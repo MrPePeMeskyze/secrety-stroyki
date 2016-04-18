@@ -4,4 +4,7 @@ Rails.application.routes.draw do
 	namespace :admin do
 	  resources :objects
 	end
+	namespace :admin do
+	  resources :objects_types
+	end
 end

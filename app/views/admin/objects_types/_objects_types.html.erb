@@ -1,0 +1,13 @@
+<tr> 
+	<th style="width:100px">
+		<%= link_to "Удалить", { action: "destroy", id: objects_types.id },
+            method: :delete, data: { confirm: 'Вы уверены?' },
+            :class => 'text-danger'  %>
+	</th>
+	<th>
+		<%= link_to objects_types.name, edit_admin_objects_type_path(objects_types.id) %>
+	</th>
+	<th style="width:100px">
+		<%= link_to 'Редактировать', edit_admin_objects_type_path(objects_types.id), :class => 'text-success' %>
+	</th>
+</tr> 

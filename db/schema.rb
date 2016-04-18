@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160415120400) do
+ActiveRecord::Schema.define(version: 20160418120400) do
 
   create_table "objects", force: true do |t|
     t.string   "title"
@@ -37,5 +37,14 @@ ActiveRecord::Schema.define(version: 20160415120400) do
   add_index "objects", ["header"], name: "index_objects_on_header", using: :btree
   add_index "objects", ["permalink"], name: "index_objects_on_permalink", using: :btree
   add_index "objects", ["title"], name: "index_objects_on_title", using: :btree
+
+  create_table "objects_types", force: true do |t|
+    t.string   "name"
+    t.integer  "sort_order", default: 1
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "objects_types", ["name"], name: "index_objects_types_on_name", using: :btree
 
 end

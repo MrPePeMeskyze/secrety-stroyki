@@ -1,5 +1,5 @@
-class ObjectTypes < ActiveRecord::Base
-	
+class ObjectsTypes < ActiveRecord::Base
+
 	validates :name, presence: true, uniqueness: true
 
 end
