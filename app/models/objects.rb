@@ -4,6 +4,7 @@ class Objects < ActiveRecord::Base
 	validates :header, presence: true, uniqueness: true
 	validates :title, presence: true, uniqueness: true
 	validates :permalink, uniqueness: true
+
 	def to_param
 		full_path
 	end
@@ -17,6 +18,10 @@ class Objects < ActiveRecord::Base
 		class_name: "Objects", 
 		foreign_key: "parent_id",
 		dependent: :destroy
+
+	has_and_belongs_to_many :navigations, 
+		join_table: "objects_navigations",
+		class_name: "Navigations"
 
 	before_save :before_save
 	after_create :after_create

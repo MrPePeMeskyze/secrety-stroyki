@@ -47,6 +47,7 @@ class Admin::ObjectsController < Admin::AdminController
 ##############################################################################
 	def update
 		@object = Objects.find_by_id(params[:id])
+	
 		if @object.update_attributes(objects_params)
 			flash[:success] = "Страница успешно отредактирована!"
 			redirect_to admin_objects_path
@@ -71,7 +72,7 @@ class Admin::ObjectsController < Admin::AdminController
 
 	    def objects_params
 	      params.require(:objects)
-	      	.permit(:parent_id, :is_published, :permalink, :header, :objects_type_id, :title, :body, :sort_order, :image, :meta_keywords, :meta_description, :additional_body )
+	      	.permit(:parent_id, :is_published, :permalink, :header, :objects_type_id, :title, :body, :sort_order, :image, :meta_keywords, :meta_description, :additional_body, navigation_ids:[])
 	    end
 		def objects_ext
 			if params[:id].present?
@@ -80,6 +81,7 @@ class Admin::ObjectsController < Admin::AdminController
 				@parents = Objects.all.order(:thread_id, :sort_order)
 			end
 			@objects_types = ObjectsTypes.all.order(:sort_order, :name)
+			@navigations = Navigations.all.order(:sort_order, :description)
 		end
 ##############################################################################
 end

@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160418120400) do
+ActiveRecord::Schema.define(version: 20160418130400) do
+
+  create_table "navigations", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "sort_order",  default: 1
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "objects", force: true do |t|
     t.string   "title"
@@ -26,7 +34,7 @@ ActiveRecord::Schema.define(version: 20160418120400) do
     t.integer  "sort_order",       default: 1
     t.integer  "thread_id",        default: 0
     t.integer  "nesting",          default: 0
-    t.integer  "object_type_id",   default: 0
+    t.integer  "objects_type_id",  default: 0
     t.integer  "auser_id",         default: 0
     t.text     "meta_keywords"
     t.text     "meta_description"
@@ -37,6 +45,14 @@ ActiveRecord::Schema.define(version: 20160418120400) do
   add_index "objects", ["header"], name: "index_objects_on_header", using: :btree
   add_index "objects", ["permalink"], name: "index_objects_on_permalink", using: :btree
   add_index "objects", ["title"], name: "index_objects_on_title", using: :btree
+
+  create_table "objects_navigations", force: true do |t|
+    t.integer "objects_id"
+    t.integer "navigations_id"
+  end
+
+  add_index "objects_navigations", ["navigations_id"], name: "index_objects_navigations_on_navigations_id", using: :btree
+  add_index "objects_navigations", ["objects_id"], name: "index_objects_navigations_on_objects_id", using: :btree
 
   create_table "objects_types", force: true do |t|
     t.string   "name"
