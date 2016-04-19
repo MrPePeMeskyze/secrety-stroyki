@@ -8,7 +8,7 @@ class PagesController < ApplicationController
 	
 ##############################################################################
 	def pages
-		@objects = Objects.where("is_published = ? AND object_type = ?", 0, 3).order("sort_order ASC").first
+		@objects = Objects.find_by_full_path(params[:id])
 	end
 
 

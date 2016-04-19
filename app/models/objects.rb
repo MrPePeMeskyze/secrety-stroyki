@@ -5,9 +5,6 @@ class Objects < ActiveRecord::Base
 	validates :title, presence: true, uniqueness: true
 	validates :permalink, uniqueness: true
 
-	def to_param
-		full_path
-	end
 	mount_uploader :image, ImageUploader
 	
 	belongs_to :parent, 
@@ -42,7 +39,7 @@ class Objects < ActiveRecord::Base
 				self.full_path = self.parent.full_path+"/"+self.permalink
 			else
 				## full_path для корня ##
-				self.full_path = self.permalink
+				self.full_path = "/"+ self.permalink
 			end
 			## Если перемещаем к другому родителю ##
 			if(self.parent_id != self.parent_id_was)
