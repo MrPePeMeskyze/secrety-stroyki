@@ -5,8 +5,8 @@
 
 @font-face {
   font-family: 'ALSRubl-Arial';
-  src: url('../fonts/application/alsrubl/alsrubl-arial-regular.eot');
-  src: url('../fonts/application/alsrubl/alsrubl-arial-regular.eot?#iefix') format('embedded-opentype'),url('../fonts/application/alsrubl/alsrubl-arial-regular.woff') format('woff'), url('../fonts/application/alsrubl/alsrubl-arial-regular.ttf') format('truetype'), url('../fonts/application/alsrubl/alsrubl-arial-regular.svg#ALSRublArialRegular') format('svg');
+  src: url('../application/alsrubl/alsrubl-arial-regular.eot');
+  src: url('../application/alsrubl/alsrubl-arial-regular.eot?#iefix') format('embedded-opentype'),url('../application/alsrubl/alsrubl-arial-regular.woff') format('woff'), url('../application/alsrubl/alsrubl-arial-regular.ttf') format('truetype'), url('../application/alsrubl/alsrubl-arial-regular.svg#ALSRublArialRegular') format('svg');
   font-weight: normal;
   font-style: normal;
 }

@@ -23,6 +23,14 @@ class Objects < ActiveRecord::Base
 		join_table: "objects_navigations",
 		class_name: "Navigations"
 
+	has_and_belongs_to_many :main_navigations, -> { where("name = ?", "main_navigation") },
+		join_table: "objects_navigations",
+		class_name: "Navigations"
+
+	has_and_belongs_to_many :catalog_navigations, -> { where("name = ?", "catalog_navigations") },
+		join_table: "objects_navigations",
+		class_name: "Navigations"
+
 	before_save :before_save
 	after_create :after_create
 	after_save :after_save

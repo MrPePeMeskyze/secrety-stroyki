@@ -1,0 +1,12 @@
+<div class="header-up-line">
+	<div class="container">
+		<ul class="header-navigation">
+			<% @main_navigation = Objects.where("is_published = ? AND parent_id = ?", 1,0).order("sort_order ASC").joins(:main_navigations) %>
+			<% @main_navigation.each do |object| %>
+				<li>
+					<%= link_to_object object, object.header %>
+				</li>
+			<% end %>
+		</ul>
+	</div>
+</div>

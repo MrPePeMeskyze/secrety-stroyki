@@ -7,4 +7,12 @@ module ApplicationHelper
 			"#{page_title}"
 		end
 	end
+	def link_to_object(object, text)
+		if(object.full_path)
+			url = object.full_path
+		end
+		content_tag(:a) do
+			link_to text, url
+		end
+	end
 end
