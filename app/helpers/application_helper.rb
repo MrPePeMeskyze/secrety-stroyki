@@ -7,12 +7,16 @@ module ApplicationHelper
 			"#{page_title}"
 		end
 	end
-	def link_to_object(object, text)
-		if(object.full_path)
-			url = object.full_path
-		end
-		content_tag(:a) do
-			link_to text, url
+	def link_to_object(name, object, options = {})
+		if(object.full_path?)
+			@url = object.full_path
+			## Добавляем закрывающий слэш к ссылку, если ссыдка не содержит параметров и не ссылка на сайт
+			if(!(/\?/).match(@url) && !(/(\.\w+|\/)$/).match(@url))
+				@url = @url + "/"
+			end
+			link_to(name, @url, options)
+		else
+			link_to(name)
 		end
 	end
 end
