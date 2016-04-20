@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
 	## Роутинг по статическим страницам
 	match ':id', via: [:get, :post], :controller => 'pages', :action => 'pages',  :constraints => {:id => /.*(#{@__static}).*/}
-
+	
 	get ':controller(/:action(/:id))'
+
+	get '*not_found', to: 'application#not_found'
 end

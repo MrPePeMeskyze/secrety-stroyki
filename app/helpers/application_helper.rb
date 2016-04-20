@@ -12,7 +12,7 @@ module ApplicationHelper
 			@url = object.full_path
 			## Добавляем закрывающий слэш к ссылку, если ссыдка не содержит параметров и не ссылка на сайт
 			if(!(/\?/).match(@url) && !(/(\.\w+|\/)$/).match(@url))
-				@url = @url + "/"
+				@url = "/"+@url+"/"
 			end
 			link_to(name, @url, options)
 		else
