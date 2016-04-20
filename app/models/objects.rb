@@ -52,10 +52,10 @@ class Objects < ActiveRecord::Base
 				end
 			end
 
-			## параметры публикации относительно родителя ##
-			if(self.parent_id?)
-				self.is_published = self.parent.is_published
-			end
+#			## параметры публикации относительно родителя ##
+#			if(self.parent_id?)
+#				self.is_published = self.parent.is_published
+#			end
 		end
 		def after_save
 			## если изменился full_path или объект переместили ##
@@ -69,7 +69,9 @@ class Objects < ActiveRecord::Base
 					object.nesting = self.nesting + 1
 					
 					## если текущий объект скрыт, то и все дочерние ##
-					object.is_published = self.is_published
+#					if(object.is_published = 0)
+#						object.is_published = self.is_published	
+#					end
 
 					## обновляем full_path ##
 					if(object.permalink?)
