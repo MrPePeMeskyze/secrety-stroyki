@@ -39,7 +39,7 @@ class Objects < ActiveRecord::Base
 				self.full_path = self.parent.full_path+"/"+self.permalink
 			else
 				## full_path для корня ##
-				self.full_path = "/"+ self.permalink
+				self.full_path = self.permalink
 			end
 			## Если перемещаем к другому родителю ##
 			if(self.parent_id != self.parent_id_was)
