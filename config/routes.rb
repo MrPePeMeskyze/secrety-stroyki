@@ -14,12 +14,15 @@ Rails.application.routes.draw do
 	## Выборка пермалинков для статических страниц
 	@__static = Objects.where("objects_type_id = ?", ENV['STATIC_PAGES_ID'])
     @__static = (@__static.map do |_static| "#{_static.permalink}" end).join('|')
-
+    	
 	root :to => "pages#index"
 	get "/catalog/" => "catalog#index"
 
-	## Роутинг по статическим страницам
-	match ':id', via: [:get, :post], :controller => 'pages', :action => 'pages',  :constraints => {:id => /.*(#{@__static}).*/}
+	match ":catalog_pages", via: [:get], :controller => 'catalog', :action => 'catalog_pages',:constraints => {:catalog_pages => /catalog.*/}
+
+	## Роутинг по статическим страницам 
+	## TODO: если в статической странице вложен раздел с другим типов, переадресует на pages, не должен учитывать такое 
+	match ':id', via: [:get], :controller => 'pages', :action => 'pages',  :constraints => {:id => /.*(#{@__static}).*/}
 	
 	get ':controller(/:action(/:id))'
 
