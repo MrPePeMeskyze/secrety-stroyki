@@ -9,7 +9,7 @@ class Users < ActiveRecord::Base
 
 	before_save :before_save
 	def title
-		title = (self.last_name+" "+self.first_name).strip
+		title = (self.name+" "+self.last_name).strip
 	end
 	private
 		def before_save

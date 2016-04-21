@@ -22,10 +22,9 @@
 				<%= link_to "Навигаторы", admin_navigations_path %>
 			</li>
 		</ul>
-		<ul class="nav navbar-nav navbar-right">
-			<li>
-				<%= link_to "Выйти", admin_logout_path %>
-			</li>
-		</ul>
+		<div class="nav navbar-nav navbar-right">
+				<%= @oUser.title %>,
+				<%= link_to "Выйти", admin_logout_path, class: "btn btn-default navbar-btn" %>
+			</div>
 	</div>
 </nav>
