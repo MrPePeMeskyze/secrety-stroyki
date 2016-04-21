@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160420135155) do
+ActiveRecord::Schema.define(version: 20160421200400) do
 
   create_table "navigations", force: true do |t|
     t.string   "name"
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20160420135155) do
   add_index "objects_types", ["name"], name: "index_objects_types_on_name", using: :btree
 
   create_table "sessions", force: true do |t|
-    t.integer  "user_id"
+    t.integer  "user_id",   default: 0
     t.string   "sid"
     t.datetime "dt_access"
   end
@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 20160420135155) do
   create_table "users", force: true do |t|
     t.string   "login"
     t.string   "email"
-    t.string   "password_digest"
+    t.string   "password"
     t.boolean  "is_admin"
     t.boolean  "is_published"
     t.string   "name"
