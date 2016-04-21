@@ -3,7 +3,7 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.string :login, index: true
       t.string :email, index: true
-      t.string :password_digest
+      t.string :password
       t.boolean :is_admin 
       t.boolean :is_published
       t.string :name
