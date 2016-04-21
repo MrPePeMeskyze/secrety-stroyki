@@ -19,4 +19,37 @@ module ApplicationHelper
 			link_to(name)
 		end
 	end
+	def oUser=(user)
+		@oUser = user
+	end
+	def oSession=(session)
+		@oSession = session
+	end
+	def session_start()
+		@now = DateTime.now.strftime("%Y-%m-%d %H:%M:%S")
+		if(cookies[:sid])
+			@session = Sessions.find_by_sid(cookies[:sid])
+		end
+		if(@session)
+			## TODO - добавить время жизни сессии
+		else
+			@session = Sessions.new
+		end
+
+		@session.dt_access = @now
+
+		if(!@session.save)
+			render :json => @session.errors
+		end
+
+		cookies.permanent[:sid] = @session.sid
+
+		self.oSession = @session
+
+		if(@oSession.user)
+			self.oUser = @oSession.user
+		else
+			self.oUser = Users.new
+		end
+	end
 end
