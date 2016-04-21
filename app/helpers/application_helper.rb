@@ -27,7 +27,7 @@ module ApplicationHelper
 	end
 	def authenticate()
 		if(@oUser.blank? || @oUser.is_published.blank?)
-			redirect_to "/admin/logon"
+			redirect_to admin_logon_path
 		end
 	end
 	def session_start()

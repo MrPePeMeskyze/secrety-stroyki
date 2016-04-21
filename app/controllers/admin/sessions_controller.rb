@@ -2,6 +2,7 @@
 #	
 ##############################################################################
 class Admin::SessionsController < Admin::AdminController
+	skip_before_filter :authenticate, :logon
 	layout "admin/layouts/session"
 
 	def logon
@@ -14,6 +15,9 @@ class Admin::SessionsController < Admin::AdminController
 			cookies.permanent[:user_name] = @oUser.login
 
 			redirect_to "/admin"
+		end
+		if(params[:authenticity_token] && @oUser.blank?)
+			@authenticate_errors = true
 		end
 	end
 
