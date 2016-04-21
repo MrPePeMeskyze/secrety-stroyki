@@ -5,8 +5,6 @@ class Admin::ObjectsController < Admin::AdminController
 	before_action :objects_ext, only: [:edit, :update, :new, :create]
 
 
-
-##############################################################################
 	def index
 		if params[:parent_id]
 			@objects = Objects.where("parent_id = ?", params[:parent_id])

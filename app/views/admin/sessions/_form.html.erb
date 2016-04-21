@@ -1,0 +1,29 @@
+<div class="page-header">
+	<h1>Авторизация пользователя</h1>
+</div>
+<% if(@authenticate_errors == true) %>
+	<div class="row alert alert-danger">
+		Неправильная пара логин-пароль!
+	</div>
+<% end %>
+<div class="row">
+	<div class="col-xs-12">
+		<div class="form-group">
+			<%= f.label :login, "Логин"%>
+			<% if(!params[:users].blank?) %>
+				<%= f.text_field :login, class: "form-control", value: params[:users][:login]  %>
+			<% else %>
+				<%= f.text_field :login, class: "form-control"%>
+			<% end %>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12">
+		<div class="form-group">
+			<%= f.label :password, "Пароль" %>
+			<%= f.password_field :password, class: "form-control" %>
+		</div>
+	</div>
+</div>
+<%= f.submit "Войти", class: "btn btn-lg btn-primary" %>

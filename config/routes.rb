@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 	# admin area
-	get "/admin" => "admin/objects#index"
+	get "/admin/" => "admin/objects#index"
+
+	match "/admin/logon/", to: 'admin/sessions#logon', via: [:get, :post]
+
+	match "/admin/logout/", to: 'admin/sessions#logout', via: [:get, :post]
+
 	namespace :admin do
 		resources :objects
 	end
@@ -9,6 +14,9 @@ Rails.application.routes.draw do
 	end
 	namespace :admin do
 		resources :navigations
+	end
+	namespace :admin do
+		resources :sessions
 	end
 
 	## Выборка пермалинков для статических страниц
@@ -19,7 +27,7 @@ Rails.application.routes.draw do
 	get "/catalog/" => "catalog#index"
 
 	## Роутинг по статическим страницам
-	match ':id', via: [:get, :post], :controller => 'pages', :action => 'pages',  :constraints => {:id => /.*(#{@__static}).*/}
+	match ':id', via: :get, :controller => 'pages', :action => 'pages',  :constraints => {:id => /.*(#{@__static}).*/}
 	
 	get ':controller(/:action(/:id))'
 

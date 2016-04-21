@@ -1,0 +1,4 @@
+<% provide(:title, 'Авторизация пользователя') %>
+<%= form_for :users, :url => { :action => :logon } do |f| %>
+	<% render :partial =>'/admin/sessions/form', :locals => {:f => f} %>
+<% end %>
