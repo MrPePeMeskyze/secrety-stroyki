@@ -1,6 +1,6 @@
 class Admin::AdminController < ActionController::Base
 	include ApplicationHelper
-	before_filter :session_start
+	before_filter :session_start, :authenticate
 	layout "admin/layouts/admin"
 
 	private
