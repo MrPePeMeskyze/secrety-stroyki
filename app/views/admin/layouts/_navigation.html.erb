@@ -24,7 +24,7 @@
 		</ul>
 		<div class="nav navbar-nav navbar-right">
 				<%= @oUser.title %>,
-				<%= link_to "Выйти", admin_logout_path, class: "btn btn-default navbar-btn" %>
+				<%= link_to "Выйти", admin_logout_path, class: "btn btn-default navbar-btn", data: { confirm: 'Вы действительно хотите выйти?' } %>
 			</div>
 	</div>
 </nav>
