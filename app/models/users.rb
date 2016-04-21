@@ -8,7 +8,9 @@ class Users < ActiveRecord::Base
 	has_many :sessions
 
 	before_save :before_save
-
+	def title
+		title = (self.last_name+" "+self.first_name).strip
+	end
 	private
 		def before_save
 			self.email = self.email.downcase
@@ -16,6 +18,9 @@ class Users < ActiveRecord::Base
 
 			if(self.password? && self.password != self.password_was)
 				self.password = Digest::MD5.hexdigest(self.password)
+			end
+			if(!self.password)
+				self.password = self.password_was
 			end
 		end
 end

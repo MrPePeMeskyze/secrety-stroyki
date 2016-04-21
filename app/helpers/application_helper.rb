@@ -25,6 +25,11 @@ module ApplicationHelper
 	def oSession=(session)
 		@oSession = session
 	end
+	def authenticate()
+		if(@oUser.blank? || @oUser.is_published.blank?)
+			redirect_to "/admin/logon"
+		end
+	end
 	def session_start()
 		@now = DateTime.now.strftime("%Y-%m-%d %H:%M:%S")
 		if(cookies[:sid])
@@ -46,10 +51,32 @@ module ApplicationHelper
 
 		self.oSession = @session
 
-		if(@oSession.user)
-			self.oUser = @oSession.user
-		else
-			self.oUser = Users.new
+		self.oUser = @oSession.user
+	end
+	def sign_in(login,password)
+		@user = Users.where("is_published = ? AND login = ? AND password = ?", 1, login, Digest::MD5.hexdigest(password)).first
+		logon_by_user(@user)
+	end
+	def logon_by_user(user)
+		if(!user.blank?)
+			## привязываем пользователя к сессии ##
+			@oSession.user_id = user.id
+		
+			if(!@oSession.save)
+				render :json => @session.errors
+			end
+		
+			@oSession.user = user
+			@oUser = @oSession.user
 		end
+	end
+	def sign_out
+		@oSession.user_id = 0
+
+		if(!@oSession.save)
+			render :json => @session.errors
+		end
+
+		@oUser = @oSession.user
 	end
 end

@@ -1,0 +1,21 @@
+<div class="row">
+	<div class="col-xs-12">
+		<div class="form-group">
+			<%= f.label :login, "Логин"%>
+			<%= f.text_field :login, class: "form-control" %>
+		</div>
+	</div>
+</div>
+
+
+<div class="row">
+	<div class="col-xs-12">
+		<div class="form-group">
+			<%= f.label :password, "Пароль" %>
+			<%= f.text_field :password, class: "form-control" %>
+		</div>
+	</div>
+</div>
+
+<%= f.submit "Сохранить", class: "btn btn-primary" %>
+

@@ -1,6 +1,17 @@
 class Admin::AdminController < ActionController::Base
-  http_basic_authenticate_with name: "admin", password: "secret"
-  include ApplicationHelper
-  before_action :session_start
-  layout "admin/layouts/admin"
+	include ApplicationHelper
+	before_filter :session_start
+	layout "admin/layouts/admin"
+
+	private
+		def authenticate
+	  		if(@oUser.blank?)
+				redirect_to admin_logon_path
+			else
+				if(@oUser.is_admin.blank? || @oUser.is_published.blank?)
+					sign_out
+					redirect_to admin_logon_path
+				end
+			end
+		end
 end
