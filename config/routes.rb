@@ -33,8 +33,10 @@ Rails.application.routes.draw do
 		## TODO: если в статической странице вложен раздел с другим типов, переадресует на pages, не должен учитывать такое 
 	match ':id', via: :get, :controller => 'pages', :action => 'pages',  :constraints => {:id => /.*(#{@__static}).*/}
 
-	match ":catalog_pages", via: [:get], :controller => 'catalog', :action => 'catalog_pages',:constraints => {:catalog_pages => /catalog.*/}
+	match ":catalog_pages", via: :get, :controller => 'catalog', :action => 'catalog_pages',:constraints => {:catalog_pages => /catalog\/.*\/.*/}
 	
+	match ":category", via: :get, :controller => 'catalog', :action => 'category',:constraints => {:category => /catalog\/.*/}	
+
 	get ':controller(/:action(/:id))'
 
 	get '*not_found', to: 'application#not_found'
