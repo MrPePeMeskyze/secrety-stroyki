@@ -16,6 +16,10 @@ class Objects < ActiveRecord::Base
 		foreign_key: "parent_id",
 		dependent: :destroy
 
+	has_many :navigation_childs, -> { where("is_published = ?", 1).order("sort_order DESC") },
+		class_name: "Objects", 
+		foreign_key: "parent_id"
+
 	has_and_belongs_to_many :navigations, 
 		join_table: "objects_navigations",
 		class_name: "Navigations"
@@ -24,7 +28,7 @@ class Objects < ActiveRecord::Base
 		join_table: "objects_navigations",
 		class_name: "Navigations"
 
-	has_and_belongs_to_many :catalog_navigations, -> { where("name = ?", "catalog_navigations") },
+	has_and_belongs_to_many :catalog_navigations, -> { where("name = ?", "catalog_navigation") },
 		join_table: "objects_navigations",
 		class_name: "Navigations"
 

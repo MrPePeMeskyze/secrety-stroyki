@@ -28,7 +28,7 @@ class Admin::ObjectsController < Admin::AdminController
 		@object.auser_id = @oUser.id
 	    if @object.save
 	    	flash[:success] = "Страница успешно создана!"
-	      	redirect_to admin_objects_path
+	      	redirect_to admin_objects_path(parent_id: @object.parent_id)
 	    else
 	    	render :new
 		end	
@@ -49,7 +49,7 @@ class Admin::ObjectsController < Admin::AdminController
 		@object.auser_id = @oUser.id
 		if @object.update_attributes(objects_params)
 			flash[:success] = "Страница успешно отредактирована!"
-			redirect_to admin_objects_path
+			redirect_to admin_objects_path(parent_id: @object.parent_id)
 		else
 			render :edit
 		end

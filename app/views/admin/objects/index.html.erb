@@ -15,6 +15,7 @@
 		<%= render @objects %>
 	</tbody>
 </table>
+
 <% content_for :right do %>
-	<%= link_to raw("<span class='glyphicon glyphicon-plus-sign'></span>Добавить"), new_admin_object_path, class: "btn btn-success" %>
+	<%= link_to raw("<span class='glyphicon glyphicon-plus-sign'></span>Добавить"), {:controller => "objects", :action => "new", :parent_id => params[:parent_id] }, class: "btn btn-success" %>
 <% end %>
