@@ -18,6 +18,9 @@ Rails.application.routes.draw do
 	namespace :admin do
 		resources :sessions
 	end
+	namespace :admin do
+		resources :users
+	end
 
 	## Выборка пермалинков для статических страниц
 	@__static = Objects.where("objects_type_id = ?", ENV['STATIC_PAGES_ID'])

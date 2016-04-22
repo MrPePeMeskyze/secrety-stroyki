@@ -1,0 +1,5 @@
+<% provide(:title, 'Создание пользователя') %>
+<h1>Создание пользователя</h1>
+<%= form_for [:admin, @user], :url => { :action => :create }, html: { multipart: true } do |f| %>
+	<% render :partial =>'admin/users/form', :locals => {:f => f} %>
+<% end %>

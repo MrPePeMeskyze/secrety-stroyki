@@ -1,0 +1,5 @@
+<% provide(:title, 'Редактирование пользователя') %>
+<h1>Редактирование пользователя <%= @user.title %></h1>
+<%= form_for @user, :url => { :action => :update }, html: { multipart: true } do |f| %>
+	<% render :partial =>'/admin/users/form', :locals => {:f => f} %>
+<% end %>
