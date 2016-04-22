@@ -1,0 +1,23 @@
+<tr <% if !users.is_published %> class="not_published" <% end %> > 
+	<th style="width:100px">
+		<%= link_to "Удалить", { action: "destroy", id: users.id },
+            method: :delete, data: { confirm: 'Вы уверены?' },
+            :class => 'text-danger'  %>
+	</th>
+	<th>
+		<%= users.login %>
+	</th>
+	<th>
+		<%= users.title %>
+	</th>
+	<th class="text-center">
+		<% if(users.is_admin) %>
+			<span class="glyphicon glyphicon-ok" style="color:green;"></span>
+		<% else %>
+			<span class="glyphicon glyphicon-remove" style="color:red;"></span>
+		<% end %>
+	</th>
+	<th style="width:100px">
+		<%= link_to 'Редактировать', edit_admin_user_path(users.id), :class => 'text-success' %>
+	</th>
+</tr> 

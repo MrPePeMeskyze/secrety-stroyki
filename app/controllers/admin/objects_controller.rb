@@ -25,6 +25,7 @@ class Admin::ObjectsController < Admin::AdminController
 ##############################################################################
 	def create
 		@object = Objects.new(objects_params)
+		@object.auser_id = @oUser.id
 	    if @object.save
 	    	flash[:success] = "Страница успешно создана!"
 	      	redirect_to admin_objects_path
@@ -45,7 +46,7 @@ class Admin::ObjectsController < Admin::AdminController
 ##############################################################################
 	def update
 		@object = Objects.find_by_id(params[:id])
-	
+		@object.auser_id = @oUser.id
 		if @object.update_attributes(objects_params)
 			flash[:success] = "Страница успешно отредактирована!"
 			redirect_to admin_objects_path

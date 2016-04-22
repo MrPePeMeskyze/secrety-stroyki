@@ -1,0 +1,22 @@
+<% provide(:title, 'Пользователи') %>
+<% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>"><%= value %></div>
+<% end %>
+<h1>Пользователи</h1>
+<table class="table"> 
+	<thead> 
+		<tr> 
+			<th></th> 
+			<th>Логин</th> 
+			<th>Имя пользователя</th>
+			<th class="text-center">Администратор</th> 
+			<th></th> 
+		</tr> 
+	</thead> 
+	<tbody> 
+		<%= render @users %>
+	</tbody>
+</table>
+<% content_for :right do %>
+	<%= link_to raw("<span class='glyphicon glyphicon-plus-sign'></span>Добавить"), new_admin_user_path, class: "btn btn-success" %>
+<% end %>
