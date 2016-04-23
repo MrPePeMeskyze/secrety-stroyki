@@ -16,7 +16,7 @@ class Objects < ActiveRecord::Base
 		foreign_key: "parent_id",
 		dependent: :destroy
 
-	has_many :navigation_childs, -> { where("is_published = ?", 1).order("sort_order DESC") },
+	has_many :published_childs, -> { where("is_published = ?", 1).order("sort_order DESC") },
 		class_name: "Objects", 
 		foreign_key: "parent_id"
 

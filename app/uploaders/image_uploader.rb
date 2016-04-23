@@ -10,7 +10,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   storage :file
   # storage :fog
   version :thumb do
-    process :resize_to_fill => [320, 240]
+    process :resize_to_fill => [150, 115]
   end
   version :general do
     process :resize_to_fill => [680, 300]

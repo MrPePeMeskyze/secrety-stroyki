@@ -1,0 +1,27 @@
+<h1>
+	<%= @catalog_page.header %>
+</h1>
+<div class="catalog-items-list">
+	<% @catalog_page.published_childs.each do |category| %>
+		<%= link_to_object category.header, category %>
+		<ul class="clearfix">
+			<% if(!category.published_childs.blank?) %>
+				<% category.published_childs.each do |group| %>
+					<li class="catalog-nav-types-inner">
+						<%= link_to_object group.header, group %>
+						<% if(!group.published_childs.blank?) %>
+							<ul>
+								<li>
+									<% group.published_childs.each do |type| %>
+										<%= link_to_object type.header, type %>
+									<% end %>
+								</li>
+							</ul>
+						<% end %>
+					</li>
+				<% end %>
+			<% end %>
+		</ul>
+		<div class="clearfix"></div> 
+	<% end %>
+</div>

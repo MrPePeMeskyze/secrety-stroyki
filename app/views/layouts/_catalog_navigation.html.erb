@@ -5,14 +5,14 @@
 			<% @catalog_navigation.each do |category| %>
 				<li class="nav-item">
 					<%= link_to_object category.header, category %>
-					<div class="catalog-nav-submenu" <% if(category.navigation_childs.count > 4) %> style="min-width: 1158px;" <% end %> >
+					<div class="catalog-nav-submenu" <% if(category.published_childs.count > 4) %> style="min-width: 1158px;" <% end %> >
 						<ul>
-							<% category.navigation_childs.each do |group| %>
-								<li class="catalog-nav-submenu-inner">
+							<% category.published_childs.each do |group| %>
+								<li class="catalog-nav-types-inner">
 									<%= link_to_object group.header, group %>
 									<ul>
 										<li>
-											<% group.navigation_childs.each do |type| %>
+											<% group.published_childs.each do |type| %>
 												<%= link_to_object type.header, type %>
 											<% end %>
 										</li>
