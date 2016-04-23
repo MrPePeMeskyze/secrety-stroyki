@@ -357,6 +357,9 @@ main h2{
   box-shadow: 0 0 3px 1px rgba(0, 10, 84, 0.4);
   border-radius: 2px;
 }
+.preview:hover a{
+  color: #0083ca;
+}
 .preview{
   width: 177px;
   padding: 0px 2px 5px 2px;
