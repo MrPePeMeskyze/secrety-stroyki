@@ -1,1 +1,15 @@
-TEST!!!
+<div class="catalog-items-list">
+	<h2>
+		<%= link_to "Каталог продукции", "/catalog/", class: "types-name" %>
+	</h2>
+	<% @types.each do |type| %>
+		<div class="preview types">
+			<% if(!type.image.blank?) %>
+				<%= link_to_object image_tag(type.image.thumb.url), type %>
+			<% else %>
+			 	<%= link_to_object image_tag("logo.jpg", :alt => "Секреты стройки", width: 150, height: 115), type %>
+			<% end %>
+			<%= link_to_object type.header, type, class: "types-name" %>
+		</div>
+	<% end %>
+</div>

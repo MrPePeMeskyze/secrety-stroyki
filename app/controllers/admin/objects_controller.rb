@@ -7,7 +7,7 @@ class Admin::ObjectsController < Admin::AdminController
 
 	def index
 		if params[:parent_id]
-			@objects = Objects.where("parent_id = ?", params[:parent_id])
+			@objects = Objects.where("parent_id = ?", params[:parent_id]).order('is_published desc, sort_order')
 		else
 			@objects = Objects.where("parent_id = ?", 0).order('is_published desc, sort_order')
 		end

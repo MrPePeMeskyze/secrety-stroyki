@@ -28,6 +28,11 @@ class CatalogController < ApplicationController
 ##############################################################################
 	public
 		def init
-			@catalog_page = Objects.find_by_full_path(params[:id])
+			@catalog_page = Objects.find_by(full_path: params[:id], is_published: 1)
+			
+			## Перехват на 404, вызов exception
+			if(@catalog_page.blank?)
+				render :template => '404', :status => 404
+			end
 		end
 end

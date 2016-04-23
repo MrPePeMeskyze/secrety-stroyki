@@ -1,3 +1,11 @@
-<h1>
-	<%= @catalog_page.header %>
-</h1>
+<div class="catalog-items-list">
+	<h1>
+		<%= @catalog_page.header %>
+	</h1>
+
+	<% @catalog_page.published_childs.each do |type| %>
+		<h2>
+			<%= link_to_object type.header, type %>
+		</h2>
+	<% end %>
+</div>

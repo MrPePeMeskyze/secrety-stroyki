@@ -2,14 +2,13 @@ class PagesController < ApplicationController
 	before_action :init
 ##############################################################################
 	def index
-		@objects = Objects.where("parent_id = ? AND is_published = ?", 0, 1).order("sort_order ASC").first
+		@types = Objects.where("objects_type_id = ?", 7).order("sort_order ASC").limit(6)
 	end
 
 
 	
 ##############################################################################
 	def pages
-		@objects = Objects.find_by_full_path(params[:id])
 	end
 
 
@@ -18,7 +17,7 @@ class PagesController < ApplicationController
 
 	private
 		def init
-			## TODO: Перехват на 404, вызов exception
+			## Перехват на 404, вызов exception
 			if(!params[:id])
 				@object = Objects.where("parent_id = ? AND is_published = ?", 0, 1).order("sort_order ASC").first
 			else

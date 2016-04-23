@@ -43,7 +43,7 @@ h5{
 }
 h1,
 h1 a{
-  font-size: 30px;
+  font-size: 36px;
 }
 h2,
 h2 a{
@@ -70,6 +70,7 @@ h5 a{
 header{
   width:100%;
   font-family: 'Roboto', 'Open Sans', sans-serif;
+  margin-bottom: 30px;
 }
 .container{
   width:1200px;
@@ -289,7 +290,7 @@ header{
 }
 .catalog-nav-types-inner>a{    
   border-bottom: 1px solid #2297d6;
-  padding-bottom: 2px;
+  padding-bottom: 1px;
   margin-bottom: 10px;
   display: inline-block;
   text-decoration: none;
@@ -333,7 +334,7 @@ main{
   padding-bottom: 80px;
 }
 main h2{
-  margin-bottom:15px;
+  margin-bottom:20px;
 }
 .catalog-content{
   padding:0px 1px;
@@ -453,6 +454,10 @@ main h2{
 .catalog-items-list > a{
   font-size: 24px;
   text-decoration: none;
+}
+.catalog-items-list .catalog-nav-types-inner{
+  width: 180px;
+  padding: 10px 0px 10px 16px;
 }
 footer{
   position: absolute;
