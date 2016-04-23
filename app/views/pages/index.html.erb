@@ -7,7 +7,7 @@
 			<% if(!type.image.blank?) %>
 				<%= link_to_object image_tag(type.image.thumb.url), type %>
 			<% else %>
-			 	<%= link_to_object image_tag("logo.jpg", :alt => "Секреты стройки", width: 150, height: 115), type %>
+			 	<%= link_to_object image_tag("izobrajenie-otsutstvuet2.jpg", :alt => type.header, width: auto, height: 115), type %>
 			<% end %>
 			<%= link_to_object type.header, type, class: "types-name" %>
 		</div>

@@ -9,6 +9,7 @@
 						<ul>
 							<% category.published_childs.each do |group| %>
 								<li class="catalog-nav-types-inner">
+									<%= in_object(group) %>
 									<%= link_to_object group.header, group %>
 									<ul>
 										<li>

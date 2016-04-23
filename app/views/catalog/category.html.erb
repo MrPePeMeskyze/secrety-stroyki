@@ -7,7 +7,7 @@
 			<% if(!group.image.blank?) %>
 				<%= link_to_object image_tag(group.image.thumb.url), group %>
 			<% else %>
-			 	<%= link_to_object image_tag("logo.jpg", :alt => "Секреты стройки", width: 150, height: 115), group %>
+			 	<%= link_to_object image_tag("izobrajenie-otsutstvuet2.jpg", :alt => group.header, width: "auto", height: 115), group %>
 			<% end %>
 			<%= link_to_object group.header, group, class: "types-name" %>
 		</div>

@@ -19,6 +19,11 @@ module ApplicationHelper
 			link_to(name)
 		end
 	end
+	def in_object(object)
+		if ((/#{object.full_path}/).match(request.url))
+			link_to(object.header, object.full_path)
+		end
+	end
 	def oUser=(user)
 		@oUser = user
 	end
